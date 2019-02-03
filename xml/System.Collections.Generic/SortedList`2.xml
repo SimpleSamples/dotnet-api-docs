@@ -136,6 +136,7 @@
     <altmember cref="T:System.Collections.Generic.IDictionary`2" />
     <altmember cref="T:System.Collections.Generic.Dictionary`2" />
     <altmember cref="T:System.Collections.Generic.SortedDictionary`2" />
+    <altmember cref="T:System.Collections.Generic.SortedSet`2" />
     <altmember cref="T:System.Collections.Generic.KeyValuePair`2" />
     <altmember cref="T:System.Collections.Generic.IComparer`1" />
   </Docs>
