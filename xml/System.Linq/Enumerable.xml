@@ -36,7 +36,7 @@
   
  The majority of the methods in this class are defined as extension methods that extend <xref:System.Collections.Generic.IEnumerable%601>. This means they can be called like an instance method on any object that implements <xref:System.Collections.Generic.IEnumerable%601>.  
   
- Methods that are used in a query that returns a sequence of values do not consume the target data until the query object is enumerated. This is known as deferred execution. Methods that are used in a query that returns a singleton value execute and consume the target data immediately.  
+ Methods used in a query that return a sequence of values do not consume the target data until the query object is enumerated. This is known as deferred execution. Methods in a query that return a singleton value execute and consume the target data immediately.  
   
  ]]></format>
     </remarks>
@@ -90,7 +90,7 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- The <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> method makes it simple to perform a calculation over a sequence of values. This method works by calling `func` one time for each element in `source` except the first one. Each time `func` is called, <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> passes both the element from the sequence and an aggregated value (as the first argument to `func`). The first element of `source` is used as the initial aggregate value. The result of `func` replaces the previous aggregated value. <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> returns the final result of `func`.  
+ The <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> method makes it simple to perform a calculation over a sequence of values. This method works by calling `func` one time for each element in `source` except the first one. Each time `func` is called, <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> passes both the element from the sequence and an aggregated value (as the first argument to `func`). The first element of `source` is the initial aggregate value. The result of `func` replaces the previous aggregated value. <xref:System.Linq.Enumerable.Aggregate%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Func%7B%60%600%2C%60%600%2C%60%600%7D%29> returns the final result of `func`.  
   
  This overload of the <xref:System.Linq.Enumerable.Aggregate%2A> method isn't suitable for all cases because it uses the first element of `source` as the initial aggregate value. You should choose another overload if the return value should include only the elements of `source` that meet a certain condition. For example, this overload isn't reliable if you want to calculate the sum of the even numbers in `source`. The result will be incorrect if the first element is odd instead of even.  
   
@@ -99,7 +99,7 @@
    
   
 ## Examples  
- The following code example demonstrates how to reverse the order of words in a string by using <xref:System.Linq.Enumerable.Aggregate%2A>.  
+ The following code example demonstrates how to reverse the order of words in a string using <xref:System.Linq.Enumerable.Aggregate%2A>.  
   
  [!code-csharp[System.Linq.Enumerable#1](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Linq.Enumerable/CS/enumerable.cs#1)]
  [!code-vb[System.Linq.Enumerable#1](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Linq.Enumerable/VB/Enumerable.vb#1)]  
@@ -168,7 +168,7 @@
    
   
 ## Examples  
- The following code example demonstrates how to use <xref:System.Linq.Enumerable.Aggregate%2A> to apply an accumulator function and use a seed value.  
+ The following code example demonstrates how to use <xref:System.Linq.Enumerable.Aggregate%2A> to apply an accumulator function with a seed value.  
   
  [!code-csharp[System.Linq.Enumerable#2](~/samples/snippets/csharp/VS_Snippets_CLR_System/system.Linq.Enumerable/CS/enumerable.cs#2)]
  [!code-vb[System.Linq.Enumerable#2](~/samples/snippets/visualbasic/VS_Snippets_CLR_System/system.Linq.Enumerable/VB/Enumerable.vb#2)]  
@@ -1243,7 +1243,7 @@
         <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
         <param name="source">A sequence of values that are used to calculate an average.</param>
         <param name="selector">A transform function to apply to each element.</param>
-        <summary>Computes the average of a sequence of <see cref="T:System.Decimal" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        <summary>Computes the average of a sequence of <see cref="T:System.Decimal" /> values obtained by invoking a transform function on each element of the input sequence.</summary>
         <returns>The average of the sequence of values.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1376,7 +1376,7 @@
         <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
         <param name="source">A sequence of values to calculate the average of.</param>
         <param name="selector">A transform function to apply to each element.</param>
-        <summary>Computes the average of a sequence of <see cref="T:System.Int32" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        <summary>Computes the average of a sequence of <see cref="T:System.Int32" /> values obtained by invoking a transform function on each element of the input sequence.</summary>
         <returns>The average of the sequence of values.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1896,13 +1896,13 @@
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
  The <xref:System.Linq.Enumerable.Cast%60%601%28System.Collections.IEnumerable%29> method enables the standard query operators to be invoked on non-generic collections by supplying the necessary type information. For example, <xref:System.Collections.ArrayList> does not implement <xref:System.Collections.Generic.IEnumerable%601>, but by calling <xref:System.Linq.Enumerable.Cast%60%601%28System.Collections.IEnumerable%29> on the <xref:System.Collections.ArrayList> object, the standard query operators can then be used to query the sequence.  
   
  If an element cannot be converted to type `TResult`, this method throws a <xref:System.InvalidCastException>.
 
- The source sequence for this method is <xref:System.Collections.IEnumerable>, which means the elements have the compile-time static type of `object`. The only type conversions that are performed by this method are reference conversions and unboxing conversions. The runtime type of the elements in the collection must match the target type, or in the case of value types, the runtime type of elements must be the result of a boxing conversion of the target type. Other conversion types, such as those between different numeric types, are not allowed. 
+ The source sequence for this method is <xref:System.Collections.IEnumerable>, which means the elements have the compile-time static type of `object`. The only type conversions performed by this method are reference conversions and unboxing conversions. The runtime type of the elements in the collection must match the target type, or in the case of value types, the runtime type of elements must be the result of a boxing conversion of the target type. Other conversion types, such as those between different numeric types, are not allowed. 
  
  To obtain only those elements that can be converted to type `TResult`, use the <xref:System.Linq.Enumerable.OfType%2A> method instead of <xref:System.Linq.Enumerable.Cast%60%601%28System.Collections.IEnumerable%29>.  
   
@@ -1990,7 +1990,7 @@ Dim doubles = From item As Integer In sequence
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
  The <xref:System.Linq.Enumerable.Concat%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%29> method differs from the <xref:System.Linq.Enumerable.Union%2A> method because the <xref:System.Linq.Enumerable.Concat%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEnumerable%7B%60%600%7D%29> method returns all the original elements in the input sequences. The <xref:System.Linq.Enumerable.Union%2A> method returns only unique elements.  
   
@@ -2358,7 +2358,7 @@ Dim doubles = From item As Integer In sequence
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
  The default value for reference and nullable types is `null`.  
   
@@ -2431,7 +2431,7 @@ Dim doubles = From item As Integer In sequence
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
  This method can be used to produce a left outer join when it is combined with the <xref:System.Linq.Enumerable.GroupJoin%2A>) method.  
   
@@ -2510,7 +2510,7 @@ Dim doubles = From item As Integer In sequence
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
  The <xref:System.Linq.Enumerable.Distinct%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%29> method returns an unordered sequence that contains no duplicate values. It uses the default equality comparer, <xref:System.Collections.Generic.EqualityComparer%601.Default%2A>, to compare values.  
   
@@ -2590,9 +2590,9 @@ Dim doubles = From item As Integer In sequence
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
- This method is implemented by using deferred execution. The immediate return value is an object that stores all the information that is required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or by using `foreach` in Visual C# or `For Each` in Visual Basic.  
+ This method is implemented using deferred execution. The immediate return value is an object that stores all the information required to perform the action. The query represented by this method is not executed until the object is enumerated either by calling its `GetEnumerator` method directly or using `foreach` in Visual C# or `For Each` in Visual Basic.  
   
- The <xref:System.Linq.Enumerable.Distinct%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEqualityComparer%7B%60%600%7D%29> method returns an unordered sequence that contains no duplicate values. If `comparer` is `null`, the default equality comparer, <xref:System.Collections.Generic.EqualityComparer%601.Default%2A>, is used to compare values.  
+ The <xref:System.Linq.Enumerable.Distinct%60%601%28System.Collections.Generic.IEnumerable%7B%60%600%7D%2CSystem.Collections.Generic.IEqualityComparer%7B%60%600%7D%29> method returns an unordered sequence containing no duplicate values. If `comparer` is `null`, the default equality comparer, <xref:System.Collections.Generic.EqualityComparer%601.Default%2A>, is used to compare values.  
   
    
   
